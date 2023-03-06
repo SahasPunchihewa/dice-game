@@ -15,4 +15,9 @@ class MainActivity : AppCompatActivity() {
         val aboutIntent = Intent(this, AboutPopup::class.java)
         startActivity(aboutIntent)
     }
+
+    fun onClickNewGame(view: View) {
+        val gameIntent = Intent(this, GameActivity::class.java)
+        startActivity(gameIntent)
+    }
 }
