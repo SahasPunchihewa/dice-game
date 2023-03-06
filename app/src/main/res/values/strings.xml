@@ -2,4 +2,7 @@
     <string name="app_name">DiceGame</string>
     <string name="btn_new_game">New Game</string>
     <string name="btn_about">About</string>
+    <string name="studentId">Student Id : w1810601</string>
+    <string name="studentName">Student Name : Sahas Punchihewa</string>
+    <string name="aboutMessage">I confirm that I understand what plagiarism is and have read and understood the section on Assessment Offences in the Essential Information for Students. The work that I have submitted is entirely my own. Any work from other authors is duly referenced and acknowledged.</string>
 </resources>
