@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DiceGame</string>
+    <string name="btn_new_game">New Game</string>
+    <string name="btn_about">About</string>
+</resources>
