@@ -79,12 +79,13 @@ class GameActivity : AppCompatActivity() {
 
             when (count) {
                 1 -> {
-                    val constraints = ConstraintSet()
-                    constraints.clone(cLUserRow1)
                     diceImage.id = R.id.user_die_1
                     cLUserRow1.addView(diceImage)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow1.id, ConstraintSet.LEFT, 0)
+                    val constraints = ConstraintSet()
+                    constraints.clone(cLUserRow1)
+
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLUserRow1.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLUserRow1)
                 }
                 2 -> {
@@ -94,9 +95,9 @@ class GameActivity : AppCompatActivity() {
                     val constraints = ConstraintSet()
                     constraints.clone(cLUserRow1)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, R.id.user_die_1, ConstraintSet.RIGHT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow1.id, ConstraintSet.RIGHT, 0)
-                    constraints.connect(R.id.user_die_1, ConstraintSet.RIGHT, diceImage.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, R.id.user_die_1, ConstraintSet.END, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLUserRow1.id, ConstraintSet.END, 0)
+                    constraints.connect(R.id.user_die_1, ConstraintSet.END, diceImage.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLUserRow1)
                 }
                 3 -> {
@@ -106,8 +107,8 @@ class GameActivity : AppCompatActivity() {
                     val constraints = ConstraintSet()
                     constraints.clone(cLUserRow2)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow2.id, ConstraintSet.LEFT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow2.id, ConstraintSet.RIGHT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLUserRow2.id, ConstraintSet.START, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLUserRow2.id, ConstraintSet.END, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLUserRow2)
                 }
                 4 -> {
@@ -117,7 +118,7 @@ class GameActivity : AppCompatActivity() {
                     val constraints = ConstraintSet()
                     constraints.clone(cLUserRow3)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow3.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLUserRow3.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLUserRow3)
                 }
                 5 -> {
@@ -127,9 +128,9 @@ class GameActivity : AppCompatActivity() {
                     val constraints = ConstraintSet()
                     constraints.clone(cLUserRow3)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, R.id.user_die_4, ConstraintSet.RIGHT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow3.id, ConstraintSet.RIGHT, 0)
-                    constraints.connect(R.id.user_die_4, ConstraintSet.RIGHT, diceImage.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, R.id.user_die_4, ConstraintSet.END, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLUserRow3.id, ConstraintSet.END, 0)
+                    constraints.connect(R.id.user_die_4, ConstraintSet.END, diceImage.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLUserRow3)
                 }
             }
@@ -148,57 +149,58 @@ class GameActivity : AppCompatActivity() {
 
             when (count) {
                 1 -> {
-                    val constraints = ConstraintSet()
-                    constraints.clone(cLAIRow1)
-                    diceImage.id = R.id.user_die_1
+                    diceImage.id = R.id.ai_die_1
                     cLAIRow1.addView(diceImage)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow1.id, ConstraintSet.LEFT, 0)
+                    val constraints = ConstraintSet()
+                    constraints.clone(cLAIRow1)
+
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLAIRow1.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLAIRow1)
                 }
                 2 -> {
-                    diceImage.id = R.id.user_die_2
+                    diceImage.id = R.id.ai_die_2
                     cLAIRow1.addView(diceImage)
 
                     val constraints = ConstraintSet()
                     constraints.clone(cLAIRow1)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, R.id.user_die_1, ConstraintSet.RIGHT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow1.id, ConstraintSet.RIGHT, 0)
-                    constraints.connect(R.id.user_die_1, ConstraintSet.RIGHT, diceImage.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, R.id.ai_die_1, ConstraintSet.END, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLAIRow1.id, ConstraintSet.END, 0)
+                    constraints.connect(R.id.ai_die_1, ConstraintSet.END, diceImage.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLAIRow1)
                 }
                 3 -> {
-                    diceImage.id = R.id.user_die_3
+                    diceImage.id = R.id.ai_die_3
                     cLAIRow2.addView(diceImage)
 
                     val constraints = ConstraintSet()
                     constraints.clone(cLAIRow2)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow2.id, ConstraintSet.LEFT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow2.id, ConstraintSet.RIGHT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLAIRow2.id, ConstraintSet.START, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLAIRow2.id, ConstraintSet.END, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLAIRow2)
                 }
                 4 -> {
-                    diceImage.id = R.id.user_die_4
+                    diceImage.id = R.id.ai_die_4
                     cLAIRow3.addView(diceImage)
 
                     val constraints = ConstraintSet()
                     constraints.clone(cLAIRow3)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, cLUserRow3.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, cLAIRow3.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLAIRow3)
                 }
                 5 -> {
-                    diceImage.id = R.id.user_die_5
+                    diceImage.id = R.id.ai_die_5
                     cLAIRow3.addView(diceImage)
 
                     val constraints = ConstraintSet()
                     constraints.clone(cLAIRow3)
 
-                    constraints.connect(diceImage.id, ConstraintSet.LEFT, R.id.user_die_4, ConstraintSet.RIGHT, 0)
-                    constraints.connect(diceImage.id, ConstraintSet.RIGHT, cLUserRow3.id, ConstraintSet.RIGHT, 0)
-                    constraints.connect(R.id.user_die_4, ConstraintSet.RIGHT, diceImage.id, ConstraintSet.LEFT, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.START, R.id.ai_die_4, ConstraintSet.END, 0)
+                    constraints.connect(diceImage.id, ConstraintSet.END, cLAIRow3.id, ConstraintSet.END, 0)
+                    constraints.connect(R.id.ai_die_4, ConstraintSet.END, diceImage.id, ConstraintSet.START, 0)
                     centerVerticallyAndApply(diceImage.id, constraints, cLAIRow3)
                 }
             }
