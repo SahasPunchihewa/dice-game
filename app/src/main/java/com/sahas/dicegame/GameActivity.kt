@@ -1,9 +1,10 @@
 package com.sahas.dicegame
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -18,6 +19,16 @@ class GameActivity : AppCompatActivity() {
     private lateinit var cLAIRow2: ConstraintLayout
     private lateinit var cLAIRow3: ConstraintLayout
 
+    private lateinit var userLabel: TextView
+    private lateinit var aiLabel: TextView
+    private lateinit var userScoreLabel: TextView
+    private lateinit var aiScoreLabel: TextView
+
+    private var scoreUser = 0
+    private var scoreAi = 0
+
+    private lateinit var builder: AlertDialog.Builder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -29,15 +40,51 @@ class GameActivity : AppCompatActivity() {
         cLAIRow1 = findViewById(R.id.constraintLayoutDiceAIRow1)
         cLAIRow2 = findViewById(R.id.constraintLayoutDiceAIRow2)
         cLAIRow3 = findViewById(R.id.constraintLayoutDiceAIRow3)
+
+        userLabel = findViewById(R.id.textViewYou)
+        aiLabel = findViewById(R.id.textViewAi)
+        userScoreLabel = findViewById(R.id.textViewScoreUser)
+        aiScoreLabel = findViewById(R.id.textViewScoreAi)
+
+        userLabel.visibility = View.INVISIBLE
+        aiLabel.visibility = View.INVISIBLE
+
+        setScore()
+
+        builder = AlertDialog.Builder(this).setPositiveButton("Ok") { _, _ -> setScore() }
+        builder.create()
+    }
+
+    private fun setScore() {
+        userScoreLabel.text = getString(R.string.your_score, scoreUser)
+        aiScoreLabel.text = getString(R.string.computer_score, scoreAi)
     }
 
     fun onThrow(view: View) {
-        Log.d("INFO", view.toString())
         val player: List<Int> = generateNumbers()
         val computer: List<Int> = generateNumbers()
 
         renderUserRoll(player)
         renderAIRoll(computer)
+
+        scoreAi += computer.sum()
+        scoreUser += player.sum()
+
+        userLabel.visibility = View.VISIBLE
+        aiLabel.visibility = View.VISIBLE
+
+        setScore()
+
+        if (scoreAi >= 101 || scoreUser >= 101) {
+            if (scoreAi > scoreUser) {
+                builder.setMessage("You Loose!")
+            } else {
+                builder.setMessage("You Win!")
+            }
+            builder.show()
+            scoreUser = 0
+            scoreAi = 0
+        }
     }
 
     fun onScore(view: View) {
@@ -70,6 +117,11 @@ class GameActivity : AppCompatActivity() {
 
     private fun renderUserRoll(numbers: List<Int>) {
         var count = 1
+
+        cLUserRow1.removeAllViews()
+        cLUserRow2.removeAllViews()
+        cLUserRow3.removeAllViews()
+
         for (number in numbers) {
             val diceImage = ImageView(this)
             val imageResource = getDiceResourceId(number)
@@ -140,6 +192,11 @@ class GameActivity : AppCompatActivity() {
 
     private fun renderAIRoll(numbers: List<Int>) {
         var count = 1
+
+        cLAIRow1.removeAllViews()
+        cLAIRow2.removeAllViews()
+        cLAIRow3.removeAllViews()
+
         for (number in numbers) {
             val diceImage = ImageView(this)
             val imageResource = getDiceResourceId(number)

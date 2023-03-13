@@ -9,6 +9,10 @@
     <string name="btn_score">Score</string>
     <string name="todo">TODO</string>
     <string name="dice_face">dice face</string>
+    <string name="you">You</string>
+    <string name="ai">AI</string>
+    <string name="your_score">Your Score: %d</string>
+    <string name="computer_score">Computer Score: %d</string>
 
     <item name="user_die_1" type="id"/>
     <item name="user_die_2" type="id"/>
