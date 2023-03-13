@@ -9,4 +9,16 @@
     <string name="btn_score">Score</string>
     <string name="todo">TODO</string>
     <string name="dice_face">dice face</string>
+
+    <item name="user_die_1" type="id"/>
+    <item name="user_die_2" type="id"/>
+    <item name="user_die_3" type="id"/>
+    <item name="user_die_4" type="id"/>
+    <item name="user_die_5" type="id"/>
+
+    <item name="ai_die_1" type="id"/>
+    <item name="ai_die_2" type="id"/>
+    <item name="ai_die_3" type="id"/>
+    <item name="ai_die_4" type="id"/>
+    <item name="ai_die_5" type="id"/>
 </resources>
